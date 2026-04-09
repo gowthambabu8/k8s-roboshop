@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: happielearning/redis:1.0.0
+          image: redis:7
 
 ---
 apiVersion: v1
