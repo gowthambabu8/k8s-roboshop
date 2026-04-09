@@ -42,11 +42,11 @@ spec:
           imagePullPolicy: Always # safe to pull everytime. There may images which are fixed and pushed with same build version
           resources:
             requests:
-              cpu: "100m"
-              memory: "150Mi"
-            limits:
-              cpu: "100m"
-              memory: "150Mi"
+            #   cpu: "100m"
+            #   memory: "150Mi"
+            # limits:
+            #   cpu: "100m"
+            #   memory: "150Mi"
           startupProbe:
             httpGet:
               port: 8080
