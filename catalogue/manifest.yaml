@@ -38,7 +38,8 @@ spec:
     spec:
       containers:
         - name: catalogue
-          image: happielearning/catalogue:1.0.0
+          image: happielearning/catalogue:1.4.0
+          imagePullPolicy: Always # safe to pull everytime. There may images which are fixed and pushed with same build version
           resources:
             requests:
               cpu: "100m"
