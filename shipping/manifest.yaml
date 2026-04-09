@@ -40,8 +40,8 @@ spec:
         - name: shipping
           image: happielearning/shipping:1.4.0
           imagePullPolicy: Always # safe to pull everytime. There may images which are fixed and pushed with same build version
-          resources:
-            requests:
+          #resources:
+            #requests:
             #   cpu: "100m"
             #   memory: "150Mi"
             # limits:
@@ -49,6 +49,7 @@ spec:
             #   memory: "150Mi"
           startupProbe:
             httpGet:
+              path: /health
               port: 8080
             periodSeconds: 10
             failureThreshold: 20
