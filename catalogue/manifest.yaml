@@ -40,8 +40,8 @@ spec:
         - name: catalogue
           image: happielearning/catalogue:1.0.0
           envFrom:
-            - configRefMap:
-                name: catalogue
+          - configRefMap:
+              name: catalogue
 
 ---
 apiVersion: v1
