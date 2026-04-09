@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: cart
-          image: happielearning/cart:1.0.0
+          image: happielearning/cart:1.4.0
           envFrom:
           - configMapRef:
               name: cart

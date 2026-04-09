@@ -43,10 +43,10 @@ spec:
           resources:
             requests:
               cpu: "100m"
-              ram: "150Mi"
+              memory: "150Mi"
             limits:
               cpu: "100m"
-              ram: "150Mi"
+              memory: "150Mi"
           readinessProbe:
             tcpSocket:
               port: 8080
