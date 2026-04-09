@@ -8,8 +8,12 @@ metadata:
     tier: db
     component: payment
 data:
+  CART_HOST: cart
+  CART_PORT: 8080
+  USER_HOST: user
+  USER_PORT: 8080
+  AMQP_HOST: rabbitmq
   
-
 ---
 apiVersion: apps/v1
 kind: Deployment
