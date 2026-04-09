@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: user
-          image: happielearning/user:1.0.0
+          image: happielearning/user:1.4.0
           envFrom:
           - configMapRef:
               name: user
