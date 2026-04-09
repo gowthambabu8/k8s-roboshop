@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cart
+  namespace: roboshop
+  labels:
+    project: roboshop
+    tier: db
+    component: cart
+data:
+  REDIS_HOST: redis
+  CATALOGUE_HOST: catalogue
+  CATALOGUE_PORT: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+  namespace: roboshop
+  labels:
+    project: roboshop
+    tier: db
+    component: cart
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      tier: db
+      component: cart
+  template:
+    metadata:
+      name: cart
+      labels:
+        project: roboshop
+        tier: db
+        component: cart
+    spec:
+      containers:
+        - name: cart
+          image: happielearning/cart:1.0.0
+          envFrom:
+          - configMapRef:
+              name: cart
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart
+  namespace: roboshop
+spec:
+  selector:
+    # labels are used for selector
+    project: roboshop
+    tier: db
+    component: cart
+  ports:
+    - protocol: TCP
+      port: 8080 # service port
+      targetPort: 8080 # container port
