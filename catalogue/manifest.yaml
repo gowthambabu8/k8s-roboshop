@@ -39,6 +39,27 @@ spec:
       containers:
         - name: catalogue
           image: happielearning/catalogue:1.0.0
+          resources:
+            requests:
+              cpu: "100m"
+              ram: "150Mi"
+            limits:
+              cpu: "100m"
+              ram: "150Mi"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 2
+
           envFrom:
           - configMapRef:
               name: catalogue
