@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: roboshop
+  labels:
+    project: roboshop
+    tier: frontend
+    component: frontend
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      tier: frontend
+      component: frontend
+  template:
+    metadata:
+      name: frontend
+      labels:
+        project: roboshop
+        tier: frontend
+        component: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: happielearning/frontend:1.4.0
+          imagePullPolicy: Always # safe to pull everytime. There may images which are fixed and pushed with same build version
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "150Mi"
+            limits:
+              cpu: "100m"
+              memory: "150Mi"
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 2
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: roboshop
+spec:
+  type: LoadBalancer
+  selector:
+    # labels are used for selector
+    project: roboshop
+    tier: frontend
+    component: frontend
+  ports:
+    - protocol: TCP
+      port: 8080 # service port
+      targetPort: 8080 # container port
