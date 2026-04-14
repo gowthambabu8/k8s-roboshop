@@ -85,7 +85,12 @@ spec:
           - configMapRef:
               name: catalogue
       nodeSelector:
-        project: "roboshop"
+        component: "backend"
+      tolerations:
+        - key: "project"
+          operator: "Equal"
+          value: "roboshop"
+          effect: "NoExecute"
 ---
 apiVersion: v1
 kind: Service
