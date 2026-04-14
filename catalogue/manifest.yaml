@@ -84,12 +84,8 @@ spec:
           envFrom:
           - configMapRef:
               name: catalogue
-      tolerations:
-        - key: "project"
-          operator: "Equal"
-          value: "roboshop1"
-          effect: "NoSchedule"
-
+      nodeSelector:
+        project="roboshop"
 ---
 apiVersion: v1
 kind: Service
