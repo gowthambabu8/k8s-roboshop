@@ -87,7 +87,7 @@ spec:
       tolerations:
         - key: "project"
           operator: "Equal"
-          value: "project1"
+          value: "roboshop1"
           effect: "NoSchedule"
 
 ---
