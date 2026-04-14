@@ -93,6 +93,7 @@ spec:
           effect: "NoExecute"
       affinity:
         nodeAffinity:
+          # hard rule
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
@@ -100,7 +101,15 @@ spec:
                   operator: In
                   values:
                     - us-east-1a
-                    - us-east-1d
+          # soft rule - preferred
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: project
+                    operator: 
+                    values:
+                      - roboshop
 ---
 apiVersion: v1
 kind: Service
