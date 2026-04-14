@@ -107,7 +107,7 @@ spec:
               preference:
                 matchExpressions:
                   - key: project
-                    operator: 
+                    operator: In
                     values:
                       - roboshop
 ---
