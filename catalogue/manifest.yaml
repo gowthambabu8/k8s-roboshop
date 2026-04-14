@@ -38,7 +38,7 @@ metadata:
   name: catalogue
   namespace: roboshop
   labels:
-    project: roboshop1
+    project: roboshop
     tier: db
     component: catalogue
 spec: 
@@ -84,6 +84,11 @@ spec:
           envFrom:
           - configMapRef:
               name: catalogue
+      tolerations:
+        - key: "project"
+          operator: "Equal"
+          value: "project1"
+          effect: "NoSchedule"
 
 ---
 apiVersion: v1
