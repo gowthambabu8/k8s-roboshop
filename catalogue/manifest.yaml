@@ -84,13 +84,22 @@ spec:
           envFrom:
           - configMapRef:
               name: catalogue
-      nodeSelector:
-        component: "frontend"
+      # nodeSelector:
+      #   component: "frontend"
       tolerations:
         - key: "project"
           operator: "Equal"
           value: "roboshop"
           effect: "NoExecute"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: topology.kubernetes.io/zone
+                  operator: In
+                  values:
+                    - us-east-1a
 ---
 apiVersion: v1
 kind: Service
