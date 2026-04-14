@@ -85,7 +85,7 @@ spec:
           - configMapRef:
               name: catalogue
       nodeSelector:
-        component: "backend"
+        component: "middleware"
       tolerations:
         - key: "project"
           operator: "Equal"
