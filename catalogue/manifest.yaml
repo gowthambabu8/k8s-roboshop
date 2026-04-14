@@ -94,13 +94,13 @@ spec:
       affinity:
         nodeAffinity:
           # hard rule
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                - key: topology.kubernetes.io/zone
-                  operator: In
-                  values:
-                    - us-east-1e
+          # requiredDuringSchedulingIgnoredDuringExecution:
+          #   nodeSelectorTerms:
+          #     - matchExpressions:
+          #       - key: topology.kubernetes.io/zone
+          #         operator: In
+          #         values:
+          #           - us-east-1e
           # soft rule - preferred
           preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 100
