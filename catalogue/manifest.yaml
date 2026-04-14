@@ -85,7 +85,7 @@ spec:
           - configMapRef:
               name: catalogue
       nodeSelector:
-        project="roboshop"
+        project: "roboshop"
 ---
 apiVersion: v1
 kind: Service
