@@ -38,7 +38,7 @@ metadata:
   name: catalogue
   namespace: roboshop
   labels:
-    project: roboshop
+    project: roboshop1
     tier: db
     component: catalogue
 spec: 
